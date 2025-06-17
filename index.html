@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk_N9iA-zvt_SP2zlqR8E8D9WZynIzTAE&callback=initMap" async defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div id="modal-title"></div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+</html>
