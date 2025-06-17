@@ -9,29 +9,40 @@ body, html {
     width: 100%;
 }
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
+
+.modal.show {
+  display: flex;
+}
+
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  font-family: 'Raleway', sans-serif;
+  color: #4b3e3e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
-.hidden {
-    display: none;
-}
+
 .close-button {
-    float: right;
-    cursor: pointer;
-    font-size: 1.5em;
+  float: right;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #888;
+}
+
+.hidden {
+  display: none !important;
 }
