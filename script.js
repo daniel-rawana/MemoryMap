@@ -9,9 +9,51 @@ const locations = [
         images: []
     },
     {
-        title: "Montreal Trip",
-        lat: 45.5017,
-        lng: -73.5673,
+        title: "Montreal",
+        lat: 45.5019,
+        lng: -73.5674,
+        images: []
+    },
+    {
+        title: "Jackson's Point",
+        lat: 44.3492,
+        lng: -79.3689,
+        images: []
+    },
+    {
+        title: "Downtown Toronto",
+        lat: 43.651070,
+        lng: -79.347015,
+        images: []
+    },
+    {
+        title: "Markham",
+        lat: 43.8561,
+        lng: -79.3370,
+        images: []
+    },
+    {
+        title: "Barrie",
+        lat: 44.3894,
+        lng: -79.6903,
+        images: []
+    },
+    {
+        title: "Schomberg",
+        lat: 44.0042,
+        lng: -79.6842,
+        images: []
+    },
+    {
+        title: "London, ON",
+        lat: 42.9849,
+        lng: -81.2453,
+        images: []
+    },
+    {
+        title: "North York",
+        lat: 43.7615,
+        lng: -79.4111,
         images: []
     },
     {
@@ -26,7 +68,7 @@ const locations = [
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 43.7, lng: -79.4 },
-        zoom: 4,
+        zoom: 5,
     });
 
     locations.forEach((loc) => {
