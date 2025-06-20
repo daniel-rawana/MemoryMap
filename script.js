@@ -2,67 +2,16 @@
 let map;
 
 const locations = [
-    {
-        title: "Toronto Island",
-        lat: 43.6205,
-        lng: -79.3781,
-        images: []
-    },
-    {
-        title: "Montreal",
-        lat: 45.5019,
-        lng: -73.5674,
-        images: []
-    },
-    {
-        title: "Jackson's Point",
-        lat: 44.3492,
-        lng: -79.3689,
-        images: []
-    },
-    {
-        title: "Downtown Toronto",
-        lat: 43.651070,
-        lng: -79.347015,
-        images: []
-    },
-    {
-        title: "Markham",
-        lat: 43.8561,
-        lng: -79.3370,
-        images: []
-    },
-    {
-        title: "Barrie",
-        lat: 44.3894,
-        lng: -79.6903,
-        images: []
-    },
-    {
-        title: "Schomberg",
-        lat: 44.0042,
-        lng: -79.6842,
-        images: []
-    },
-    {
-        title: "London, ON",
-        lat: 42.9849,
-        lng: -81.2453,
-        images: []
-    },
-    {
-        title: "North York",
-        lat: 43.7615,
-        lng: -79.4111,
-        images: []
-    },
-    {
-        title: "LA (Future)",
-        lat: 34.0522,
-        lng: -118.2437,
-        images: [],
-        message: "To be written..."
-    }
+    { title: "Toronto Island", lat: 43.6205, lng: -79.3781, images: [] },
+    { title: "Montreal", lat: 45.5019, lng: -73.5674, images: [] },
+    { title: "Jackson's Point", lat: 44.3492, lng: -79.3689, images: [] },
+    { title: "Downtown Toronto", lat: 43.651070, lng: -79.347015, images: [] },
+    { title: "Markham", lat: 43.8561, lng: -79.3370, images: [] },
+    { title: "Barrie", lat: 44.3894, lng: -79.6903, images: [] },
+    { title: "Schomberg", lat: 44.0042, lng: -79.6842, images: [] },
+    { title: "London, ON", lat: 42.9849, lng: -81.2453, images: [] },
+    { title: "North York", lat: 43.7615, lng: -79.4111, images: [] },
+    { title: "LA (Future)", lat: 34.0522, lng: -118.2437, images: [], message: "To be written..." }
 ];
 
 function initMap() {
@@ -80,7 +29,6 @@ function initMap() {
 
         marker.addListener("click", () => {
             document.getElementById("modal-title").textContent = loc.title;
-
             const body = document.getElementById("modal-body");
             body.innerHTML = "";
 
@@ -100,6 +48,10 @@ function initMap() {
 
             document.getElementById("modal").classList.remove("hidden");
         });
+    });
+
+    document.getElementById("modal").addEventListener("click", (e) => {
+        if (e.target.id === "modal") closeModal();
     });
 }
 
