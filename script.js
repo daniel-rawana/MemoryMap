@@ -180,33 +180,27 @@ const locations = [
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 43.7, lng: -79.4 },
-    zoom: 5,
+    zoom: 4, // Default zoom before fitBounds
   });
 
+  const bounds = new google.maps.LatLngBounds();
+
   locations.forEach((loc) => {
+    const position = { lat: loc.lat, lng: loc.lng };
     const marker = new google.maps.Marker({
-      position: { lat: loc.lat, lng: loc.lng },
+      position,
       map,
       title: loc.title
     });
+
+    bounds.extend(position);
 
     marker.addListener("click", () => {
       openSlideshow(loc);
     });
   });
 
-  document.getElementById("modal").addEventListener("click", (e) => {
-    if (e.target.id === "modal") closeModal();
-  });
-
-  document.getElementById("prev").addEventListener("click", () => {
-    changeSlide(-1);
-  });
-
-  document.getElementById("next").addEventListener("click", () => {
-    changeSlide(1);
-  });
+  map.fitBounds(bounds);
 }
 
 function openSlideshow(loc) {
