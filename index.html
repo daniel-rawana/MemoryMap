@@ -4,23 +4,27 @@
   <meta charset="UTF-8">
   <title>A Map of Dan & Sam</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk_N9iA-zvt_SP2zlqR8E8D9WZynIzTAE&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
   <script src="script.js" defer></script>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
     <h1>A Map of Dan & Sam</h1>
     <p>A journey through places we’ve been and the dreams we have.</p>
   </header>
-
   <div id="map"></div>
 
   <div id="modal" class="modal hidden">
     <div class="modal-content">
       <span class="close-button" onclick="closeModal()">&times;</span>
-      <div id="modal-title" style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem;"></div>
-      <div id="modal-body"></div>
+      <div id="modal-title" class="modal-title"></div>
+      <div class="slideshow-container">
+        <img id="slideshow-image" class="slideshow-image" src="" alt="">
+        <div class="slideshow-controls">
+          <button id="prev">&#10094;</button>
+          <button id="next">&#10095;</button>
+        </div>
+      </div>
     </div>
   </div>
 </body>

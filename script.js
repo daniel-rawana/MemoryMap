@@ -1,5 +1,8 @@
 
 let map;
+let currentImageIndex = 0;
+let currentImages = [];
+
 
 const locations = [
   {
@@ -28,7 +31,6 @@ const locations = [
   "images/Cancun/IMG_2465.JPEG",
   "images/Cancun/IMG_2503.JPEG"
 ]
-
 },
   { title: "Downtown Toronto", lat: 43.651070, lng: -79.347015, images: [
   "images/DowntownToronto/IMG_0106.JPEG",
@@ -73,7 +75,7 @@ const locations = [
   "images/GrandRiver/IMG_1327.JPEG",
   "images/GrandRiver/IMG_2195.JPEG"
 ]
- }, // Approximate near Brantford/Cambridge
+ },
   { title: "Jackson's Point", lat: 44.3492, lng: -79.3689, images: [
   "images/JacksonsPoint/IMG_1418.JPEG",
   "images/JacksonsPoint/IMG_1422.JPEG",
@@ -177,46 +179,59 @@ const locations = [
 
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 43.7, lng: -79.4 },
-        zoom: 5,
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 43.7, lng: -79.4 },
+    zoom: 5,
+  });
+
+  locations.forEach((loc) => {
+    const marker = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map,
+      title: loc.title
     });
 
-    locations.forEach((loc) => {
-        const marker = new google.maps.Marker({
-            position: { lat: loc.lat, lng: loc.lng },
-            map,
-            title: loc.title
-        });
-
-        marker.addListener("click", () => {
-            document.getElementById("modal-title").textContent = loc.title;
-            const body = document.getElementById("modal-body");
-            body.innerHTML = "";
-
-            if (loc.images && loc.images.length > 0) {
-                loc.images.forEach((img) => {
-                    const image = document.createElement("img");
-                    image.src = img;
-                    image.style.width = "100%";
-                    image.style.marginBottom = "10px";
-                    body.appendChild(image);
-                });
-            } else {
-                const p = document.createElement("p");
-                p.textContent = loc.message || "No images yet.";
-                body.appendChild(p);
-            }
-
-            document.getElementById("modal").classList.remove("hidden");
-        });
+    marker.addListener("click", () => {
+      openSlideshow(loc);
     });
+  });
 
-    document.getElementById("modal").addEventListener("click", (e) => {
-        if (e.target.id === "modal") closeModal();
-    });
+  document.getElementById("modal").addEventListener("click", (e) => {
+    if (e.target.id === "modal") closeModal();
+  });
+
+  document.getElementById("prev").addEventListener("click", () => {
+    changeSlide(-1);
+  });
+
+  document.getElementById("next").addEventListener("click", () => {
+    changeSlide(1);
+  });
+}
+
+function openSlideshow(loc) {
+  currentImages = loc.images || [];
+  currentImageIndex = 0;
+  document.getElementById("modal-title").textContent = loc.title;
+  updateSlideshowImage();
+  document.getElementById("modal").classList.remove("hidden");
+}
+
+function updateSlideshowImage() {
+  const img = document.getElementById("slideshow-image");
+  if (currentImages.length > 0) {
+    img.src = currentImages[currentImageIndex];
+  } else {
+    img.src = "";
+  }
+}
+
+function changeSlide(direction) {
+  if (currentImages.length === 0) return;
+  currentImageIndex = (currentImageIndex + direction + currentImages.length) % currentImages.length;
+  updateSlideshowImage();
 }
 
 function closeModal() {
-    document.getElementById("modal").classList.add("hidden");
+  document.getElementById("modal").classList.add("hidden");
 }
