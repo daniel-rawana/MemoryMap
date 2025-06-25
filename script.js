@@ -231,7 +231,9 @@ function closeModal() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".prev").addEventListener("click", () => changeSlide(-1));
-  document.querySelector(".next").addEventListener("click", () => changeSlide(1));
+  document.querySelector(".close-button").addEventListener("click", closeModal);
+  document.getElementById("prev").addEventListener("click", () => changeSlide(-1));
+  document.getElementById("next").addEventListener("click", () => changeSlide(1));
 });
+
 
