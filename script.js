@@ -229,3 +229,10 @@ function changeSlide(direction) {
 function closeModal() {
   document.getElementById("modal").classList.add("hidden");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".close").addEventListener("click", closeModal);
+  document.querySelector(".prev").addEventListener("click", () => changeSlide(-1));
+  document.querySelector(".next").addEventListener("click", () => changeSlide(1));
+});
+
