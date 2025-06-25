@@ -236,4 +236,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("next").addEventListener("click", () => changeSlide(1));
 });
 
+map.addListener("click", () => {
+  document.getElementById("bg-music").play();
+});
+
 
